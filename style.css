@@ -1,141 +1,212 @@
-/* Base Page Colors& Typography */
-body {
-  background-color: #FAF6EE; /* Warm cream background */
-color: #333333;
-  font-family: 'Cormorant Garamond', serif;
+/* ==========================================================================
+   1. System Variables & Design Tokens
+   ========================================================================== */
+:root {
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
+
+  /* Colors */
+  --bg-color: #f8fafc;
+  --surface-color: #ffffff;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --primary: #2563eb;
+  --primary-hover: #1d4ed8;
+  --border-color: #e2e8f0;
+
+  /* Spacing & Layout */
+  --max-width: 1100px;
+  --radius: 8px;
+  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+/* Dark mode support (automatically applies if user's device is in dark mode) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #0f172a;
+    --surface-color: #1e293b;
+    --text-primary: #f8fafc;
+    --text-secondary: #94a3b8;
+    --border-color: #334155;
+  }
+}
+
+/* ==========================================================================
+   2. CSS Reset & Global Base
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Top Navigation Bar */
-.navbar {
-  background-color: #F4EFE6;
-  border-bottom: 1px solid #E5DEC9;
-  padding: 15px 0;
-  text-align: center;
-}
-
-.nav-links a {
-color: #8C7355; /* Soft brown tint */
-  text-decoration: none;
-  margin: 0 15px;
-  font-family: 'Cinzel', serif;
-  font-size: 0.9rem;
-  letter-spacing: 1px;
-}
-
-.nav-links a:hover {
-color: #2B4C3F; /* Deep green hover effect */
-}
-
-/* Header & Titles */
-.header {
-  text-align: center;
-  padding: 50px 20px 20px20px;
-}
-
-.brand-title {
-  font-family: 'Cinzel', serif;
-  font-weight: 400;
-  font-size: 2.5rem;
-color: #8C6D3B; /* Classic gold-bronze tone */
-  letter-spacing: 4px;
-  margin-bottom: 5px;
-}
-
-.tagline {
-  font-style: italic;
-  font-size: 1.2rem;
-color: #7A6B58;
-  margin-top: 0;
-}
-
-.divider {
-  border: 0;
-  height: 1px;
-  background: #D8CDB5;
-  width: 40%;
-  margin: 30px auto;
-}
-
-.intro-text {
-  font-size: 1.25rem;
-  max-width: 600px;
-  margin: 0 auto;
-color: #555555;
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-color);
+color: var(--text-primary);
   line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Card Section */
+/* Helper for main container constraint */
 .container {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 20px;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 1.5rem;
 }
 
-.section-label {
-  text-align: center;
-  font-family: 'Cinzel', serif;
-  letter-spacing: 3px;
-  font-size: 0.85rem;
-color: #8C7355;
-  margin-bottom: 30px;
+/* ==========================================================================
+   3. Typography & Links
+   ========================================================================== */
+h1, h2, h3, h4, h5, h6 {
+color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
 }
 
-.card-grid {
+h1 { font-size: 2.25rem; }
+h2 { font-size: 1.75rem; margin-top: 1.5rem; }
+h3 { font-size: 1.25rem; }
+
+p {
+color: var(--text-secondary);
+  margin-bottom: 1rem;
+}
+
+a {
+color: var(--primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+color: var(--primary-hover);
+  text-decoration: underline;
+}
+
+/* ==========================================================================
+   4. Header & Navigation
+   ========================================================================== */
+header {
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+header .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+color: var(--text-primary);
+  text-decoration: none;
+}
+
+navul {
+  display: flex;
+  list-style: none;
+  gap: 1.5rem;
+}
+
+nav a {
+color: var(--text-secondary);
+  font-weight: 500;
+}
+
+nav a:hover {
+color: var(--primary);
+  text-decoration: none;
+}
+
+/* ==========================================================================
+   5. Buttons & Interactive Elements
+   ========================================================================== */
+.btn {
+  display: inline-block;
+  padding: 0.6rem 1.2rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--radius);
+  background-color: var(--primary);
+color: #ffffff;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn:hover {
+  background-color: var(--primary-hover);
+color: #ffffff;
+  text-decoration: none;
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+/* ==========================================================================
+   6. Cards & Layout Grid
+   ========================================================================== */
+main {
+  flex: 1;
+  padding: 2rem 0;
+}
+
+.grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
 }
 
 .card {
-  background-color: #FFFFFF;
-  border: 1px solid #E8E2D5;
-  border-radius: 12px;
-  padding: 25px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
 
-.icon-box {
-  background-color: #E6F2ED; /* Mint green accent icon square */
-  width: 45px;
-  height: 45px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  margin-bottom: 15px;
+/* ==========================================================================
+   7. Footer
+   ========================================================================== */
+footer {
+  background-color: var(--surface-color);
+  border-top: 1px solid var(--border-color);
+  padding: 2rem 0;
+  margin-top: auto;
+  text-align: center;
+  font-size: 0.875rem;
+color: var(--text-secondary);
 }
 
-.card h3 {
-  font-family: 'Cinzel', serif;
-color: #1F4535; /* Dark forest green text */
-  margin: 0 0 10px 0;
-  letter-spacing: 1px;
-}
+/* ==========================================================================
+   8. Responsive Adjustments
+   ========================================================================== */
+@media (max-width: 600px) {
+  h1 { font-size: 1.75rem; }
+  h2 { font-size: 1.35rem; }
 
-.card p {
-color: #666666;
-  font-size: 1.05rem;
-  line-height: 1.5;
-}
-
-.card-link {
-  display: inline-block;
-  margin-top: 15px;
-color: #8C6D3B;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.card-link:hover {
-  text-decoration: underline;
+  header .container {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
 }
 
