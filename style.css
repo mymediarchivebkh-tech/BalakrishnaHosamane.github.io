@@ -1,256 +1,141 @@
-/* ==========================================================================
-1.	Theme Variables & Fonts
-   ========================================================================== */
-:root {
-  /* Colors */
-  --bg-main: #fcf9f2;         /* Warm off-white/cream background */
-  --bg-nav: #f7f1e5;          /* Slightly darker cream for header */
-  --card-bg: #faf7f0;         /* Card background */
-
-  --text-primary: #8c6a2d;     /* Deep warm gold/bronze for main title */
-  --text-body: #614d3c;        /* Soft brown for body text */
-  --text-nav: #786250;         /* Navigation link color */
-  --accent-green: #1d5c4e;     /* Deep emerald green for card headings */
-  --accent-navy: #1f2756;      /* Deep blue accent */
-
-  --border-light: #e8ded0;     /* Thin subtle borders */
-
-  /* Fonts */
-  --font-heading: ‘Cinzel’, serif;
-  --font-serif: ‘Cormorant Garamond’, Georgia, serif;
+/* Base Page Colors& Typography */
+body {
+  background-color: #FAF6EE; /* Warm cream background */
+color: #333333;
+  font-family: 'Cormorant Garamond', serif;
+  margin: 0;
+  padding: 0;
 }
 
-/* ==========================================================================
-2.	Base Styles
-   ========================================================================== */
-*, *::before, *::after {
-  Box-sizing: border-box;
-  Margin: 0;
-  Padding: 0;
+/* Top Navigation Bar */
+.navbar {
+  background-color: #F4EFE6;
+  border-bottom: 1px solid #E5DEC9;
+  padding: 15px 0;
+  text-align: center;
 }
 
-Body {
-  Background-color: var(--bg-main);
-Color: var(--text-body);
-  Font-family: var(--font-serif);
-  Font-size: 1.15rem;
-  Line-height: 1.6;
+.nav-links a {
+color: #8C7355; /* Soft brown tint */
+  text-decoration: none;
+  margin: 0 15px;
+  font-family: 'Cinzel', serif;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
 }
 
-.container {
-  Width: 100%;
-  Max-width: 900px;
-  Margin: 0 auto;
-  Padding: 0 1.5rem;
+.nav-links a:hover {
+color: #2B4C3F; /* Deep green hover effect */
 }
 
-/* ==========================================================================
-3.	Header & Top Navigation
-   ========================================================================== */
-Header {
-  Background-color: var(--bg-nav);
-  Border-bottom: 1px solid var(--border-light);
-  Padding: 0.75rem 0;
+/* Header & Titles */
+.header {
+  text-align: center;
+  padding: 50px 20px 20px20px;
 }
 
-.top-bar {
-  Text-align: center;
-  Padding-bottom: 0.5rem;
+.brand-title {
+  font-family: 'Cinzel', serif;
+  font-weight: 400;
+  font-size: 2.5rem;
+color: #8C6D3B; /* Classic gold-bronze tone */
+  letter-spacing: 4px;
+  margin-bottom: 5px;
 }
 
-.top-bar .logo-sm {
-  Font-family: var(--font-heading);
-  Font-size: 0.85rem;
-  Letter-spacing: 0.25em;
-Color: var(--text-primary);
-  Text-transform: uppercase;
-}
-
-Navul {
-  Display: flex;
-  Justify-content: center;
-  Align-items: center;
-  Flex-wrap: wrap;
-  List-style: none;
-  Gap: 0;
-}
-
-Nav li {
-  Display: flex;
-  Align-items: center;
-}
-
-Navli:not(:last-child)::after {
-  Content: “|”;
-Color: var(--border-light);
-  Margin: 0 0.8rem;
-  Font-size: 0.85rem;
-}
-
-Nav a {
-  Font-size: 0.95rem;
-Color: var(--text-nav);
-  Text-decoration: none;
-  Transition: color 0.2s ease;
-}
-
-Nav a:hover {
-Color: var(--text-primary);
-}
-
-/* ==========================================================================
-4.	Hero / Banner Section
-   ========================================================================== */
-.hero {
-  Text-align: center;
-  Padding: 2.5rem 1rem 1.5rem 1rem;
-}
-
-/* Language Pill Switcher */
-.lang-switcher {
-  Display: inline-flex;
-  Background-color: #f1e7d8;
-  Border: 1px solid var(--border-light);
-  Border-radius: 50px;
-  Padding: 3px;
-  Margin-bottom: 1.5rem;
-}
-
-.lang-btn {
-  Border: none;
-  Background: transparent;
-  Padding: 4px 12px;
-  Border-radius: 50px;
-  Font-size: 0.85rem;
-Color: var(--text-body);
-  Cursor: pointer;
-}
-
-.lang-btn.active {
-  Background-color: var(--text-primary);
-Color: #ffffff;
-  Font-weight: 600;
-}
-
-/* Main Site Title */
-.site-title {
-  Font-family: var(--font-heading);
-  Font-size: 2.5rem;
-  Letter-spacing: 0.35em;
-Color: var(--text-primary);
-  Font-weight: 400;
-  Margin-bottom: 0.5rem;
-  Text-transform: uppercase;
-}
-
-.site-subtitle {
-  Font-style: italic;
-  Font-size: 1.25rem;
-Color: var(--text-primary);
-  Opacity: 0.9;
-  Margin-bottom: 2rem;
+.tagline {
+  font-style: italic;
+  font-size: 1.2rem;
+color: #7A6B58;
+  margin-top: 0;
 }
 
 .divider {
-  Border: 0;
-  Height: 1px;
-  Background: linear-gradient(to right, transparent, var(--border-light), transparent);
-  Margin: 1.5rem 0;
+  border: 0;
+  height: 1px;
+  background: #D8CDB5;
+  width: 40%;
+  margin: 30px auto;
 }
 
-.hero-description {
-  Font-size: 1.3rem;
-  Max-width: 650px;
-  Margin: 0 auto 2.5rem auto;
-Color: var(--text-body);
+.intro-text {
+  font-size: 1.25rem;
+  max-width: 600px;
+  margin: 0 auto;
+color: #555555;
+  line-height: 1.6;
 }
 
-/* Section Subtitle (“EXPLORE”) */
+/* Card Section */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
 .section-label {
-  Font-family: var(--font-heading);
-  Font-size: 0.8rem;
-  Letter-spacing: 0.3em;
-Color: var(--text-primary);
-  Text-transform: uppercase;
-  Text-align: center;
-  Margin-bottom: 1.5rem;
+  text-align: center;
+  font-family: 'Cinzel', serif;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+color: #8C7355;
+  margin-bottom: 30px;
 }
 
-/* ==========================================================================
-5.	Content Cards Grid
-   ========================================================================== */
 .card-grid {
-  Display: grid;
-  Grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  Gap: 1.25rem;
-  Margin-bottom: 3rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 25px;
 }
 
 .card {
-  Background-color: var(--card-bg);
-  Border: 1px solid var(--border-light);
-  Border-radius: 12px;
-  Padding: 1.75rem;
-  Position: relative;
-  Overflow: hidden;
-  Transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-/* Colored top border accents on cards */
-.card::before {
-  Content: “”;
-  Position: absolute;
-  Top: 0;
-  Left: 0;
-  Right: 0;
-  Height: 4px;
-  Background-color: var(--accent-green);
-}
-
-.card.navy-accent::before {
-  Background-color: var(--accent-navy);
+  background-color: #FFFFFF;
+  border: 1px solid #E8E2D5;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .card:hover {
-  Transform: translateY(-3px);
-  Box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 15px rgba(0,0,0,0.05);
 }
 
-/* Rounded Icon Boxes */
-.card-icon {
-  Width: 48px;
-  Height: 48px;
-  Border-radius: 10px;
-  Background-color: #dbece5;
-  Display: flex;
-  Align-items: center;
-  Justify-content: center;
-  Margin-bottom: 1.25rem;
-  Font-size: 1.3rem;
-Color: var(--accent-green);
+.icon-box {
+  background-color: #E6F2ED; /* Mint green accent icon square */
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  margin-bottom: 15px;
 }
 
-.card.navy-accent .card-icon {
-  Background-color: #e2e5f5;
-Color: var(--accent-navy);
+.card h3 {
+  font-family: 'Cinzel', serif;
+color: #1F4535; /* Dark forest green text */
+  margin: 0 0 10px 0;
+  letter-spacing: 1px;
 }
 
-.card-title {
-  Font-family: var(--font-heading);
-  Font-size: 1.1rem;
-  Letter-spacing: 0.15em;
-Color: var(--accent-green);
-  Text-transform: uppercase;
-  Margin-bottom: 0.75rem;
+.card p {
+color: #666666;
+  font-size: 1.05rem;
+  line-height: 1.5;
 }
 
-.card.navy-accent .card-title {
-Color: var(--accent-navy);
+.card-link {
+  display: inline-block;
+  margin-top: 15px;
+color: #8C6D3B;
+  text-decoration: none;
+  font-weight: 600;
 }
 
-.card-text {
-  Font-size: 1.05rem;
-Color: var(--text-body);
-  Line-height: 1.5;
+.card-link:hover {
+  text-decoration: underline;
 }
 
