@@ -1,212 +1,256 @@
 /* ==========================================================================
-   1. System Variables & Design Tokens
+1.	Theme Variables & Fonts
    ========================================================================== */
 :root {
-  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  --font-mono: ui-monospace, SFMono-Regular, SF Mono, Menlo, Consolas, monospace;
-
   /* Colors */
-  --bg-color: #f8fafc;
-  --surface-color: #ffffff;
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --primary: #2563eb;
-  --primary-hover: #1d4ed8;
-  --border-color: #e2e8f0;
+  --bg-main: #fcf9f2;         /* Warm off-white/cream background */
+  --bg-nav: #f7f1e5;          /* Slightly darker cream for header */
+  --card-bg: #faf7f0;         /* Card background */
 
-  /* Spacing & Layout */
-  --max-width: 1100px;
-  --radius: 8px;
-  --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-}
+  --text-primary: #8c6a2d;     /* Deep warm gold/bronze for main title */
+  --text-body: #614d3c;        /* Soft brown for body text */
+  --text-nav: #786250;         /* Navigation link color */
+  --accent-green: #1d5c4e;     /* Deep emerald green for card headings */
+  --accent-navy: #1f2756;      /* Deep blue accent */
 
-/* Dark mode support (automatically applies if user's device is in dark mode) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #0f172a;
-    --surface-color: #1e293b;
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --border-color: #334155;
-  }
+  --border-light: #e8ded0;     /* Thin subtle borders */
+
+  /* Fonts */
+  --font-heading: ‘Cinzel’, serif;
+  --font-serif: ‘Cormorant Garamond’, Georgia, serif;
 }
 
 /* ==========================================================================
-   2. CSS Reset & Global Base
+2.	Base Styles
    ========================================================================== */
 *, *::before, *::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+  Box-sizing: border-box;
+  Margin: 0;
+  Padding: 0;
 }
 
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-color);
-color: var(--text-primary);
-  line-height: 1.6;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
+Body {
+  Background-color: var(--bg-main);
+Color: var(--text-body);
+  Font-family: var(--font-serif);
+  Font-size: 1.15rem;
+  Line-height: 1.6;
 }
 
-/* Helper for main container constraint */
 .container {
-  width: 100%;
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 1.5rem;
+  Width: 100%;
+  Max-width: 900px;
+  Margin: 0 auto;
+  Padding: 0 1.5rem;
 }
 
 /* ==========================================================================
-   3. Typography & Links
+3.	Header & Top Navigation
    ========================================================================== */
-h1, h2, h3, h4, h5, h6 {
-color: var(--text-primary);
-  line-height: 1.25;
-  margin-bottom: 0.75rem;
-  font-weight: 700;
+Header {
+  Background-color: var(--bg-nav);
+  Border-bottom: 1px solid var(--border-light);
+  Padding: 0.75rem 0;
 }
 
-h1 { font-size: 2.25rem; }
-h2 { font-size: 1.75rem; margin-top: 1.5rem; }
-h3 { font-size: 1.25rem; }
-
-p {
-color: var(--text-secondary);
-  margin-bottom: 1rem;
+.top-bar {
+  Text-align: center;
+  Padding-bottom: 0.5rem;
 }
 
-a {
-color: var(--primary);
-  text-decoration: none;
-  transition: color 0.2s ease;
+.top-bar .logo-sm {
+  Font-family: var(--font-heading);
+  Font-size: 0.85rem;
+  Letter-spacing: 0.25em;
+Color: var(--text-primary);
+  Text-transform: uppercase;
 }
 
-a:hover {
-color: var(--primary-hover);
-  text-decoration: underline;
+Navul {
+  Display: flex;
+  Justify-content: center;
+  Align-items: center;
+  Flex-wrap: wrap;
+  List-style: none;
+  Gap: 0;
+}
+
+Nav li {
+  Display: flex;
+  Align-items: center;
+}
+
+Navli:not(:last-child)::after {
+  Content: “|”;
+Color: var(--border-light);
+  Margin: 0 0.8rem;
+  Font-size: 0.85rem;
+}
+
+Nav a {
+  Font-size: 0.95rem;
+Color: var(--text-nav);
+  Text-decoration: none;
+  Transition: color 0.2s ease;
+}
+
+Nav a:hover {
+Color: var(--text-primary);
 }
 
 /* ==========================================================================
-   4. Header & Navigation
+4.	Hero / Banner Section
    ========================================================================== */
-header {
-  background-color: var(--surface-color);
-  border-bottom: 1px solid var(--border-color);
-  padding: 1rem 0;
-  position: sticky;
-  top: 0;
-  z-index: 100;
+.hero {
+  Text-align: center;
+  Padding: 2.5rem 1rem 1.5rem 1rem;
 }
 
-header .container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+/* Language Pill Switcher */
+.lang-switcher {
+  Display: inline-flex;
+  Background-color: #f1e7d8;
+  Border: 1px solid var(--border-light);
+  Border-radius: 50px;
+  Padding: 3px;
+  Margin-bottom: 1.5rem;
 }
 
-.logo {
-  font-size: 1.25rem;
-  font-weight: 700;
-color: var(--text-primary);
-  text-decoration: none;
+.lang-btn {
+  Border: none;
+  Background: transparent;
+  Padding: 4px 12px;
+  Border-radius: 50px;
+  Font-size: 0.85rem;
+Color: var(--text-body);
+  Cursor: pointer;
 }
 
-navul {
-  display: flex;
-  list-style: none;
-  gap: 1.5rem;
+.lang-btn.active {
+  Background-color: var(--text-primary);
+Color: #ffffff;
+  Font-weight: 600;
 }
 
-nav a {
-color: var(--text-secondary);
-  font-weight: 500;
+/* Main Site Title */
+.site-title {
+  Font-family: var(--font-heading);
+  Font-size: 2.5rem;
+  Letter-spacing: 0.35em;
+Color: var(--text-primary);
+  Font-weight: 400;
+  Margin-bottom: 0.5rem;
+  Text-transform: uppercase;
 }
 
-nav a:hover {
-color: var(--primary);
-  text-decoration: none;
+.site-subtitle {
+  Font-style: italic;
+  Font-size: 1.25rem;
+Color: var(--text-primary);
+  Opacity: 0.9;
+  Margin-bottom: 2rem;
+}
+
+.divider {
+  Border: 0;
+  Height: 1px;
+  Background: linear-gradient(to right, transparent, var(--border-light), transparent);
+  Margin: 1.5rem 0;
+}
+
+.hero-description {
+  Font-size: 1.3rem;
+  Max-width: 650px;
+  Margin: 0 auto 2.5rem auto;
+Color: var(--text-body);
+}
+
+/* Section Subtitle (“EXPLORE”) */
+.section-label {
+  Font-family: var(--font-heading);
+  Font-size: 0.8rem;
+  Letter-spacing: 0.3em;
+Color: var(--text-primary);
+  Text-transform: uppercase;
+  Text-align: center;
+  Margin-bottom: 1.5rem;
 }
 
 /* ==========================================================================
-   5. Buttons & Interactive Elements
+5.	Content Cards Grid
    ========================================================================== */
-.btn {
-  display: inline-block;
-  padding: 0.6rem 1.2rem;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: var(--radius);
-  background-color: var(--primary);
-color: #ffffff;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease, transform 0.1s ease;
-}
-
-.btn:hover {
-  background-color: var(--primary-hover);
-color: #ffffff;
-  text-decoration: none;
-}
-
-.btn:active {
-  transform: scale(0.98);
-}
-
-/* ==========================================================================
-   6. Cards & Layout Grid
-   ========================================================================== */
-main {
-  flex: 1;
-  padding: 2rem 0;
-}
-
-.grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 1.5rem;
-  margin-top: 1.5rem;
+.card-grid {
+  Display: grid;
+  Grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  Gap: 1.25rem;
+  Margin-bottom: 3rem;
 }
 
 .card {
-  background-color: var(--surface-color);
-  border: 1px solid var(--border-color);
-  border-radius: var(--radius);
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  Background-color: var(--card-bg);
+  Border: 1px solid var(--border-light);
+  Border-radius: 12px;
+  Padding: 1.75rem;
+  Position: relative;
+  Overflow: hidden;
+  Transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Colored top border accents on cards */
+.card::before {
+  Content: “”;
+  Position: absolute;
+  Top: 0;
+  Left: 0;
+  Right: 0;
+  Height: 4px;
+  Background-color: var(--accent-green);
+}
+
+.card.navy-accent::before {
+  Background-color: var(--accent-navy);
 }
 
 .card:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  Transform: translateY(-3px);
+  Box-shadow: 0 8px 20px rgba(0, 0, 0, 0.04);
 }
 
-/* ==========================================================================
-   7. Footer
-   ========================================================================== */
-footer {
-  background-color: var(--surface-color);
-  border-top: 1px solid var(--border-color);
-  padding: 2rem 0;
-  margin-top: auto;
-  text-align: center;
-  font-size: 0.875rem;
-color: var(--text-secondary);
+/* Rounded Icon Boxes */
+.card-icon {
+  Width: 48px;
+  Height: 48px;
+  Border-radius: 10px;
+  Background-color: #dbece5;
+  Display: flex;
+  Align-items: center;
+  Justify-content: center;
+  Margin-bottom: 1.25rem;
+  Font-size: 1.3rem;
+Color: var(--accent-green);
 }
 
-/* ==========================================================================
-   8. Responsive Adjustments
-   ========================================================================== */
-@media (max-width: 600px) {
-  h1 { font-size: 1.75rem; }
-  h2 { font-size: 1.35rem; }
+.card.navy-accent .card-icon {
+  Background-color: #e2e5f5;
+Color: var(--accent-navy);
+}
 
-  header .container {
-    flex-direction: column;
-    gap: 0.75rem;
-  }
+.card-title {
+  Font-family: var(--font-heading);
+  Font-size: 1.1rem;
+  Letter-spacing: 0.15em;
+Color: var(--accent-green);
+  Text-transform: uppercase;
+  Margin-bottom: 0.75rem;
+}
+
+.card.navy-accent .card-title {
+Color: var(--accent-navy);
+}
+
+.card-text {
+  Font-size: 1.05rem;
+Color: var(--text-body);
+  Line-height: 1.5;
 }
 
